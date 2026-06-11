@@ -139,6 +139,18 @@ function checkpermission(item) {
       }
     };
   }
+  else if(item === "b_form"){
+    return(async function (req,res,next) {
+      const id = Number(req.params.user_id);
+      if(Number.isNaN(id)){
+        next(new AppError("id must be number",400))
+      }
+
+      
+
+      
+    })
+  }
   
 }
 
