@@ -9,7 +9,7 @@ async function  find_admin(user_name) {
         return data;
     }
     catch(err){
-        throw AppError(err.message , 500);
+        throw  new AppError(err.message , 500);
     }
     
 }

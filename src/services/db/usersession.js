@@ -18,5 +18,4 @@ async function insert_user_sessions(data) {
 
 
 module.exports.insert = insert_user_sessions;
-module.exports.revoke_sessions = revoke_sessions;
-module.exports.find_sessions = find_sessions;
+

@@ -1,13 +1,13 @@
 const bcrypt = require("bcrypt");
 const appError = require('../../config/AppErrore');
-const users_db = require('../../services/db/users');
+const admins_db = require('../../services/db/admins');
 
  const check = async (req, res, next) => {
   const { user_name, password } = req.body.user_info;
   try {
    
-    const data = await users_db.findUser(user_name);
-
+    const data = await admins_db(user_name);
+    console.log("reza")
     if (data.length === 0) {
       return next(new appError("نام کاربری یا رمز عبور اشتباه است.", 401)); 
     }

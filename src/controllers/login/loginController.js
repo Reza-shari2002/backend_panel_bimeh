@@ -1,8 +1,8 @@
 const generateAccesstoken = require("../../services/token/Accesstoken");
-const generateRefreshtoken = require("../../services/token/Refreshtoken");
 const user_sessions_db = require("../../services/db/usersession");
 
 const loginController = async (req, res, next) => {
+  console.log("reza.sh")
   const AccessToken = generateAccesstoken(req.user);
 
   try {
