@@ -9,7 +9,7 @@ const units_router = require('./routes/units.js');
 const notifications_router = require('./routes/notification.js')
 
 const app = express();
-app.set('trust proxy', 1);  // ✅ بسیار مهم
+app.set('trust proxy', 1);  
 app.use(cors());
 app.use(helmet());
 app.use(express.json());

@@ -6,13 +6,11 @@ function make_access_token(user) {
   return jwt.sign(
     {
       id: user.id,
-      unit_id: user.unit_id,
-      company_id: user.company_id,
-      user_role: user.user_role,
-      full_name:user.full_name
+      phone: user.phone,
+
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "3d" },
+    { expiresIn: "15m" },
   );
 }
 
