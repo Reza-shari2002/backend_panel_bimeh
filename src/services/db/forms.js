@@ -4,7 +4,7 @@ const db = require('../../config/db');
 
 async function find_user_data(id) {
     try{
-        const query = 'select * from users where id = ?';
+        const query = 'select * from forms where id = ?';
         const [user_data] =  await db.query(query,[id]);
         if(user_data.length === 0){
             throw(new AppError("user not found",404))
@@ -19,7 +19,7 @@ async function find_user_data(id) {
 
 async function find_users_data() {
     try{
-        const query = 'select * from users';
+        const query = 'select * from forms';
         const [users_form] = await db.query(query);
         return users_form;
     }

@@ -31,7 +31,19 @@ function checkbody(item) {
     };
 
 
-  } 
+  }
+  
+  else if(item === "post form"){
+    return((req,res,next)=>{
+      const body = req.body;
+
+      if(!body){
+       return next(new AppError("body wrong" , 400))
+      }
+
+      
+    })
+  }
 }
 
 module.exports = checkbody;
