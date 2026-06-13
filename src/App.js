@@ -3,7 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const bcrypt = require('bcrypt');
 const login_router = require ('../src/routes/login.js')
-const users_form_router = require('./routes/users_form.js');
+const forms_router = require('./routes/forms.js');
 const multer = require('multer')
 const app = express();
 app.set('trust proxy', 1);  
@@ -13,7 +13,7 @@ app.use(helmet());
 
 app.use('/login' ,login_router );
 
-app.use('/forms',users_form_router);
+app.use('/forms',forms_router);
 
 
 app.use((err,req,res,next)=>{
