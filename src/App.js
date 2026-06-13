@@ -9,12 +9,11 @@ const app = express();
 app.set('trust proxy', 1);  
 app.use(cors());
 app.use(helmet());
-app.use(express.json({limit:'10mg'}));
 
 
 app.use('/login' ,login_router );
 
-app.use('/users_form',users_form_router);
+app.use('/forms',users_form_router);
 
 
 app.use((err,req,res,next)=>{

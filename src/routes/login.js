@@ -6,6 +6,7 @@ const iplimiter = require('../config/Iplimiter.js');
 const router = express.Router();
 
 
+router.use(express.json({limit:'10mg'}));
 
 router.post('/',iplimiter, checkbody('login'), loginmiddleware, loginController);
 
