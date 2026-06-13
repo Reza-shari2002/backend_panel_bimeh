@@ -8,6 +8,7 @@ async function insert_user_sessions(data) {
     const [result] = await db.query(query, [data.admin_id]);
     return result;
   } catch (err) {
+    console.log(err.message)
     throw new AppError("server error", 500);
   }
 }

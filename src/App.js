@@ -3,18 +3,18 @@ const cors = require('cors');
 const helmet = require('helmet');
 const bcrypt = require('bcrypt');
 const login_router = require ('../src/routes/login.js')
-
+const users_form_router = require('./routes/users_form.js');
 
 const app = express();
 app.set('trust proxy', 1);  
 app.use(cors());
 app.use(helmet());
-app.use(express.json());
+app.use(express.json({limit:'10mg'}));
 
 
 app.use('/login' ,login_router );
 
-app.use('/user_form',)
+app.use('/users_form',users_form_router);
 
 
 app.use((err,req,res,next)=>{

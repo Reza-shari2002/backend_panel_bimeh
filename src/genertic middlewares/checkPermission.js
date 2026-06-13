@@ -1,8 +1,5 @@
 const AppError = require("../config/AppErrore");
-const units_db = require("../services/db/units");
-const task_db = require("../services/db/tasks");
-const notification_user_db = require('../services/db/notification_users');
-
+const users_db = require('../services/db/users')
 
 function checkpermission(item) {
   if (item === "tasks_of_units") {
@@ -139,12 +136,21 @@ function checkpermission(item) {
       }
     };
   }
-  else if(item === "b_form"){
+  else if(item === "user_form"){
     return(async function (req,res,next) {
       const id = Number(req.params.user_id);
       if(Number.isNaN(id)){
         next(new AppError("id must be number",400))
       }
+      try{
+        const user_form = await users_db.find_user_data(id);
+        req.user = user_form[0];
+         return next();
+      }
+      catch(err){
+        next(err)
+      }
+      
 
       
 

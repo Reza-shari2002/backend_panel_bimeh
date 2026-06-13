@@ -9,13 +9,14 @@ async function  find_admin(user_name) {
         return data;
     }
     catch(err){
-        throw  new AppError(err.message , 500);
+        console.log(err.message)
+        throw  new AppError( "server Error", 500);
     }
     
 }
 
 
 
-module.exports = find_admin;
+module.exports.find_admin = find_admin;
 
 
