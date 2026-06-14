@@ -1,10 +1,8 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
-
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 function make_access_token(user) {
-
- console.log("REza.sjsj")
+  console.log("REza.sjsj");
   return jwt.sign(
     {
       id: user.id,
@@ -16,4 +14,3 @@ function make_access_token(user) {
 }
 
 module.exports = make_access_token;
-

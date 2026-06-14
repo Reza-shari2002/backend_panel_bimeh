@@ -1,6 +1,5 @@
 const Joi = require("joi");
 
-
 const create_task_validate = Joi.object({
   title: Joi.string().min(3).required(),
   description: Joi.string().min(3).required(),
@@ -14,11 +13,10 @@ const create_task_validate = Joi.object({
       Joi.object({
         unit_id: Joi.number().required(),
         title: Joi.string().required(),
-        unit_name:Joi.string().required()
-      })
+        unit_name: Joi.string().required(),
+      }),
     )
     .required(),
 });
-
 
 module.exports = create_task_validate;

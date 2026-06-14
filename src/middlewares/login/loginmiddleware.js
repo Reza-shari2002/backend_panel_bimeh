@@ -1,19 +1,18 @@
 const bcrypt = require("bcrypt");
-const appError = require('../../config/AppErrore');
-const admins_db = require('../../services/db/admins');
+const appError = require("../../config/AppErrore");
+const admins_db = require("../../services/db/admins");
 
- const check = async (req, res, next) => {
+const check = async (req, res, next) => {
   const { user_name, password } = req.body.user_info;
   try {
-   
     const data = await admins_db.find_admin(user_name);
-    console.log("reza")
+    console.log("reza");
     if (data.length === 0) {
-      return next(new appError("نام کاربری یا رمز عبور اشتباه است.", 401)); 
+      return next(new appError("نام کاربری یا رمز عبور اشتباه است.", 401));
     }
 
     const user = data[0];
-    const isPasswordMatch = await bcrypt.compare(password, user.password); 
+    const isPasswordMatch = await bcrypt.compare(password, user.password);
 
     if (!isPasswordMatch) {
       return next(new appError("نام کاربری یا رمز عبور اشتباه است.", 401));
@@ -25,6 +24,6 @@ const admins_db = require('../../services/db/admins');
   } catch (err) {
     next(new appError(err.message, 500));
   }
-}
+};
 
 module.exports = check;

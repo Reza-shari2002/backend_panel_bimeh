@@ -5,7 +5,7 @@ const db = mysql.createPool({
   user: "root",
   password: "reza.sh2002",
   database: "test_db",
-  waitForConnections: true
+  waitForConnections: true,
 });
 
 module.exports = db;

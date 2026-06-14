@@ -15,11 +15,14 @@ function diff(oldworkflow_stages, newworkflow_stages, oldIndex, newIndex) {
   const newCurrent = newworkflow_stages[newIndex];
 
   if (oldCurrent.unit_id !== newCurrent.unit_id) {
-    current_workflow.push({newcurrent_unit_id:newCurrent.unit_id , oldcurrent_unit_id:oldCurrent.unit_id});
-    fixed_units = fixed_units.filter((id)=>(id !== oldCurrent.unit_id && id !== newCurrent.unit_id ))
-
+    current_workflow.push({
+      newcurrent_unit_id: newCurrent.unit_id,
+      oldcurrent_unit_id: oldCurrent.unit_id,
+    });
+    fixed_units = fixed_units.filter(
+      (id) => id !== oldCurrent.unit_id && id !== newCurrent.unit_id,
+    );
   }
-
 
   return {
     added_units: [...new Set(added_units)],
