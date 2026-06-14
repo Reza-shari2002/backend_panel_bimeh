@@ -5,6 +5,7 @@ const users_form_controller = require("../controllers/users_form/users_form");
 const checkpermission = require("../genertic middlewares/checkPermission");
 const userData_controller = require("../controllers/users_form/user_form");
 const uploadInsuranceDocuments = require("../middlewares/forms/uploadInsuranceDocuments");
+const checkbody = require("../genertic middlewares/checkbody");
 
 const router = express.Router();
 
@@ -18,8 +19,6 @@ router.get(
   userData_controller,
 );
 
-router.post("/", iplimiter, uploadInsuranceDocuments, (req, res) => {
-  res.json({ name: req.body });
-});
+router.post("/", iplimiter, uploadInsuranceDocuments, checkbody("create form"));
 
 module.exports = router;
