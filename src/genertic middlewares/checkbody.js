@@ -49,7 +49,7 @@ function checkbody(item) {
       }
 
 
-      if(req.body.plate_history_type === '0'){
+      if(req?.body.plate_history_type === '0'){
         const {error , value} = create_form_validate.plate_history_validator(req.body.plate_history_code);
          if (error) {
         console.log(`validation body :  ${error.details[0].message}`);
