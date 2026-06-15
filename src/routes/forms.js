@@ -6,7 +6,8 @@ const checkpermission = require("../genertic middlewares/checkPermission");
 const userData_controller = require("../controllers/users_form/user_form");
 const uploadInsuranceDocuments = require("../middlewares/forms/uploadInsuranceDocuments");
 const checkbody = require("../genertic middlewares/checkbody");
-
+const validationUploadFiles = require('../middlewares/forms/validationUploadFiles');
+const verifyCaptcha = require('../middlewares/forms/verifyCaptcha');
 const router = express.Router();
 
 router.get("/", iplimiter, token_verify, users_form_controller);
@@ -19,6 +20,6 @@ router.get(
   userData_controller,
 );
 
-router.post("/", iplimiter, uploadInsuranceDocuments, checkbody("create form"));
+router.post("/", iplimiter,verifyCaptcha, uploadInsuranceDocuments, checkbody("create form"),validationUploadFiles );
 
 module.exports = router;
