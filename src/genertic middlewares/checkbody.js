@@ -42,7 +42,7 @@ function checkbody(item) {
         return next(new AppError("form data wrong", 400));
       }
 
-      const { error, value } = create_form_validate.create_form_validator(req.body);
+      const { error, value } = create_form_validate.create_form_validator.validate(req.body);
       if (error) {
         console.log(`validation body :  ${error.details[0].message}`);
         return next(new AppError("form data wrong", 400));
@@ -50,9 +50,9 @@ function checkbody(item) {
 
 
       if(req?.body.plate_history_type === '0'){
-        const {error , value} = create_form_validate.plate_history_validator(req.body.plate_history_code);
+        const {error , value} = create_form_validate.plate_history_validator.validate(req.body.plate_history_code);
          if (error) {
-        console.log(`validation body :  ${error.details[0].message}`);
+        console.log(`plate_history_code is required`);
         return next(new AppError("form data wrong", 400));
       }
 

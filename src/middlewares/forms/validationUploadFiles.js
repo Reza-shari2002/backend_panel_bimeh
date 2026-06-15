@@ -1,4 +1,6 @@
-const {fileTypeFromBuffer} = require("file-type");
+const FileType = require("file-type");
+const AppError = require('../../config/AppErrore');
+
 
 
 function getRequiredFiles(body) {
@@ -48,17 +50,14 @@ async function validateUploadedFiles(req, res, next) {
     const file = uploaded?.[field]?.[0];
 
     if (!file) {
-      return res.status(400).json({
-        message: `${field} is required`
-      });
+      return next(new AppError(`${field} is required`,400))
     }
 
-    const detectedType = await fileTypeFromBuffer(file.buffer);
+   const detectedType = await FileType.fromBuffer(file.buffer);
+
 
     if (!detectedType || !allowed.includes(detectedType.ext)) {
-      return res.status(400).json({
-        message: `Invalid file type for ${field}`
-      });
+      return next(new AppError(` invalid type for ${field}`,400))
     }
   }
 
@@ -67,3 +66,5 @@ async function validateUploadedFiles(req, res, next) {
 
 
 module.exports = validateUploadedFiles;
+
+
