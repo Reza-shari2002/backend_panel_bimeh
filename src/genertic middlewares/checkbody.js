@@ -27,19 +27,35 @@ function checkbody(item) {
 
       next();
     };
+
+
+
+
+
+
   } else if (item === "create form") {
     return function (req, res, next) {
-      const body = req.body;
+      const body = req?.body;
 
       if (!body) {
         console.log("req has not body");
         return next(new AppError("form data wrong", 400));
       }
 
-      const { error, value } = create_form_validate(req.body);
+      const { error, value } = create_form_validate.create_form_validator(req.body);
       if (error) {
         console.log(`validation body :  ${error.details[0].message}`);
         return next(new AppError("form data wrong", 400));
+      }
+
+
+      if(req.body.plate_history_type === '0'){
+        const {error , value} = create_form_validate.plate_history_validator(req.body.plate_history_code);
+         if (error) {
+        console.log(`validation body :  ${error.details[0].message}`);
+        return next(new AppError("form data wrong", 400));
+      }
+
       }
 
       return next();
