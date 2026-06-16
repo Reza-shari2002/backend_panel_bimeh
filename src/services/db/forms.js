@@ -25,5 +25,37 @@ async function find_users_data() {
   }
 }
 
+
+
+
+async function saveondb(files, body) {
+
+  const final_data = {
+    ...body,
+    ...files
+  };
+
+  try {
+
+    const query = "INSERT INTO forms SET ?";
+
+    const [result] = await db.query(query, [final_data]);
+
+    console.log("data added to db");
+
+    return result;
+
+  } catch (err) {
+
+   
+
+    throw new AppError(err.message, 500);
+  }
+}
+
+
+
+
 module.exports.find_user_data = find_user_data;
 module.exports.find_users_data = find_users_data;
+module.exports.saveondb = saveondb;

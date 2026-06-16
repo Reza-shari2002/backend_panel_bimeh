@@ -9,7 +9,6 @@ const upload = multer({
   },
 });
 
-// تعریف دقیق تمام فیلدهایی که در سیستم ممکن است آپلود شوند
 const uploadInsuranceDocuments = upload.fields([
   { name: "national_id_image_url", maxCount: 1 },
   { name: "car_card_image_front_url", maxCount: 1 },
