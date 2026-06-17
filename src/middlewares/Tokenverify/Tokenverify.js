@@ -5,6 +5,7 @@ const verifyAsync = util.promisify(jwt.verify);
 require("dotenv").config();
 
 async function access_verify(req, res, next) {
+  console.log("eee")
   const main_token = req.headers.authorization;
   const token = main_token && main_token.split(" ")[1];
   if (!token) {

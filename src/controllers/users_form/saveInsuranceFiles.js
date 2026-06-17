@@ -33,7 +33,7 @@ async function saveInsuranceFiles(req, res, next) {
 
       const randomName = crypto.randomBytes(16).toString("hex");
       const fileName = `${randomName}.${type.ext}`;
-
+      console.log(fileName);
       const absolutePath = path.join(baseDir, fileName);
 
       await fs.promises.writeFile(absolutePath, file.buffer);
@@ -42,6 +42,7 @@ async function saveInsuranceFiles(req, res, next) {
     }
     
     req.savedFiles = savedFiles;
+    console.log(req.savedFiles);
 
     return next()
   

@@ -10,19 +10,25 @@ const validationUploadFiles = require('../middlewares/forms/validationUploadFile
 const verifyCaptcha = require('../middlewares/forms/verifyCaptcha');
 const saveondb = require('../controllers/users_form/saveondb');
 const saveInsuranceFiles = require('../controllers/users_form/saveInsuranceFiles');
-
+const viewcontroler = require('../controllers/users_form/viewcontroler');
 
 const router = express.Router();
 
-router.get("/", iplimiter, token_verify, users_form_controller);
+router.get("/"/*, iplimiter, token_verify*/, users_form_controller);
+
+
+router.get("/view" , iplimiter /*, token_verify ,*/ ,  viewcontroler);
 
 router.get(
-  "/:user_id",
+  "/:form_id",/*
   iplimiter,
-  token_verify,
+  token_verify,*/
   checkpermission("user_form"),
   userData_controller,
 );
+
+
+
 
 router.post("/",/* iplimiter,*//*verifyCaptcha,*/ uploadInsuranceDocuments, checkbody("create form"),validationUploadFiles , saveInsuranceFiles,saveondb );
 

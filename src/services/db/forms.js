@@ -2,15 +2,21 @@ const AppError = require("../../config/AppErrore");
 const db = require("../../config/db");
 
 async function find_user_data(id) {
+  
   try {
-    const query = "select * from forms where id = ?";
+    const query = "select * from forms where id =?";
     const [user_data] = await db.query(query, [id]);
     if (user_data.length === 0) {
       throw new AppError("user not found", 404);
     }
-    return user_data;
+    
+    return user_data[0];
   } catch (err) {
-    throw new AppError(err.message, 500);
+    console.log(err.message);
+    if(err.message === "user not found"){
+      throw(new AppError(err.message,400))
+    }
+    throw new AppError('serever error', 500);
   }
 }
 
