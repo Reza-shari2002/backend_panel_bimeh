@@ -41,7 +41,7 @@ function getRequiredFiles(body) {
 
 async function validateUploadedFiles(req, res, next) {
   const requiredFiles = getRequiredFiles(req.body);
-  console.log(requiredFiles);
+  
   req.requiredFiles = requiredFiles;
   const uploaded = req.files || {};
   

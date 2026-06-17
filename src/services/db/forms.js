@@ -22,7 +22,7 @@ async function find_user_data(id) {
 
 async function find_users_data() {
   try {
-    const query = "select * from forms";
+    const query = "select phone_number , address , postal_code ,  plate_history_code , has_discount_transfer , has_active_insurance_transfer , is_relative_transfer  , plate_history_type  , document_car_type , full_name , created_at from forms ORDER BY created_at DESC";
     const [users_form] = await db.query(query);
     return users_form;
   } catch (err) {

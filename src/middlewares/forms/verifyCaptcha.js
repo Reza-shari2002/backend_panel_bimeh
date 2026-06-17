@@ -21,9 +21,9 @@ const verifyCaptcha = async (req, res, next) => {
     const response = await axios.post(
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
       {
-        secret: process.env.TURNSTILE_SECRET_KEY, // کلید مخفی شما در .env
+        secret: process.env.TURNSTILE_SECRET_KEY, 
         response: token,
-        remoteip: req.ip, // اختیاری: برای امنیت بیشتر آی‌پی کاربر را هم می‌فرستیم
+        remoteip: req.ip, 
       }
     );
 

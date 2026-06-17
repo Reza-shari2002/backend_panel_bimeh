@@ -1,6 +1,7 @@
 const joi = require("joi");
 
 const create_form_validator = joi.object({
+  full_name : joi.string().max(50).required() , 
   phone_number: joi.string().max(50).required(),
   address: joi.string().max(50).required(),
   postal_code: joi.string().max(150).required(),
