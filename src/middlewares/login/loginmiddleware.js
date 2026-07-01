@@ -6,7 +6,6 @@ const check = async (req, res, next) => {
   const { user_name, password } = req.body.user_info;
   try {
     const data = await admins_db.find_admin(user_name);
-    console.log("reza");
     if (data.length === 0) {
       return next(new appError("نام کاربری یا رمز عبور اشتباه است.", 401));
     }

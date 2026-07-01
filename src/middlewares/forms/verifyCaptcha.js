@@ -9,14 +9,13 @@ require("dotenv").config();
 const verifyCaptcha = async (req, res, next) => {
   try {
     const token = req.headers["x-captcha-token"];
-
+    console.log(token);
     if (!token) {
       return res.status(400).json({
         success: false,
         message: "لطفاً تایید کنید که ربات نیستید (توکن کپچا یافت نشد)",
       });
     }
-
     const body = new URLSearchParams();
     body.append("secret", process.env.TURNSTILE_SECRET_KEY);
     body.append("response", token);

@@ -18,10 +18,10 @@ const router = express.Router();
 
 
 
-router.get("/"/*, iplimiter, token_verify*/, users_form_controller);
+router.get("/", iplimiter, token_verify, users_form_controller);
 
 
-router.get("/view" , iplimiter /*, token_verify ,*/ ,  viewcontroler);
+router.get("/view" , iplimiter , token_verify  ,  viewcontroler);
 
 
 router.get(
@@ -35,6 +35,6 @@ router.get(
 
 
 
-router.post("/",/* iplimiter,*//*verifyCaptcha,*/ uploadInsuranceDocuments, checkbody("create form"),validationUploadFiles , saveInsuranceFiles,saveondb );
+router.post("/", iplimiter,verifyCaptcha, uploadInsuranceDocuments, checkbody("create form"),validationUploadFiles , saveInsuranceFiles,saveondb );
 
 module.exports = router;

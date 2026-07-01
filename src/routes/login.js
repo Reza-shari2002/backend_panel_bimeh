@@ -5,11 +5,11 @@ const checkbody = require("../genertic middlewares/checkbody.js");
 const iplimiter = require("../config/Iplimiter.js");
 const router = express.Router();
 
-router.use(express.json({ limit: "10mg" }));
+router.use(express.json());
 
 router.post(
-  "/",
-  iplimiter,
+  "/",/*
+  iplimiter,*/
   checkbody("login"),
   loginmiddleware,
   loginController,
