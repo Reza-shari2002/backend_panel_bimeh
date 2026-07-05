@@ -18,16 +18,16 @@ const router = express.Router();
 
 
 
-router.get("/", iplimiter, token_verify, users_form_controller);
+router.get("/",/* iplimiter*/ token_verify, users_form_controller);
 
 
-router.get("/view" , iplimiter , token_verify  ,  viewcontroler);
+router.get("/view"  , token_verify  ,  viewcontroler);
 
 
 router.get(
   "/:form_id",/*
-  iplimiter,
-  token_verify,*/
+  iplimiter,*/
+  token_verify,
   checkpermission("user_form"),
   userData_controller,
 );

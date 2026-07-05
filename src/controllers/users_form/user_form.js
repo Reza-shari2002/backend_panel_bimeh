@@ -11,7 +11,6 @@ async function user_form_controller(req, res, next) {
       form_data[fileFildes[i]] =   `${req.protocol}://${req.get("host")}/forms/view?path=${form_data[fileFildes[i]]}`;
     }
       }
-      console.log(form_data)
 
       res.status(200).json({status:"success" , data:form_data});
 

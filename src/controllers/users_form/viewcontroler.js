@@ -5,7 +5,6 @@ const fs = require('fs');
 async function viewcontroler(req, res, next) {
     try {
         const { path: filepath } = req.query;
-        console.log(filepath)
         
         if (!filepath) {
             return next(new AppError("مسیر فایل الزامی است", 400));

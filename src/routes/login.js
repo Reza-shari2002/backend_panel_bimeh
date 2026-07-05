@@ -8,8 +8,8 @@ const router = express.Router();
 router.use(express.json());
 
 router.post(
-  "/",/*
-  iplimiter,*/
+  "/",
+  iplimiter,
   checkbody("login"),
   loginmiddleware,
   loginController,

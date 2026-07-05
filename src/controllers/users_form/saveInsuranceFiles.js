@@ -42,7 +42,6 @@ async function saveInsuranceFiles(req, res, next) {
     }
     
     req.savedFiles = savedFiles;
-    console.log(req.savedFiles);
 
     return next()
   
