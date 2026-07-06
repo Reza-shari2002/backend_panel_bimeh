@@ -2,7 +2,7 @@ const { json } = require("express");
 const AppError = require("../config/AppErrore");
 const login_validate = require("../validators/login_validate");
 const create_form_validate = require("../validators/create_form_validate");
-
+const send_notification_validate = require('../validators/send_notification_validate')
 function checkbody(item) {
   if (item === "login") {
     return async function (req, res, next) {
@@ -57,6 +57,27 @@ function checkbody(item) {
       }
 
       }
+      
+      return next();
+    };
+  }
+  else if (item === "send") {
+    return function (req, res, next) {
+      const body = req?.body;
+
+      if (!body) {
+        console.log("req has not body");
+        return next(new AppError("form data wrong", 400));
+      }
+
+      const { error, value } = send_notification_validate.validate(req.body);
+      if (error) {
+        console.log(`validation body :  ${error.details[0].message}`);
+        return next(new AppError("form data wrong", 400));
+      }
+
+
+
       
       return next();
     };
