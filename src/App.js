@@ -4,11 +4,13 @@ const helmet = require("helmet");
 const bcrypt = require("bcrypt");
 const login_router = require("../src/routes/login.js");
 const forms_router = require("./routes/forms.js");
+const notification_router = require('./routes/notifications.js')
 const err_handler = require('./errorhandler/error_handler.js')
 const multer = require("multer");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger.js");
 const app = express();
+
 
 
 
@@ -19,6 +21,8 @@ app.use(helmet());
 app.use("/login", login_router);
 
 app.use("/forms", forms_router);
+
+app.use('/notification' , notification_router)
 
 
 
