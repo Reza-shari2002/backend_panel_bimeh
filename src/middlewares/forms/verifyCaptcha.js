@@ -9,7 +9,6 @@ require("dotenv").config();
 const verifyCaptcha = async (req, res, next) => {
   try {
     const token = req.headers["x-captcha-token"];
-    console.log(token);
     if (!token) {
       return res.status(400).json({
         success: false,
