@@ -1,15 +1,19 @@
 const axiosInstance = require("./axiosInstance");
 
-async function SendNotificationApi(message, phoneNumber) {
+async function SendNotificationApi(messageTexts, mobiles) {
   try {
-    const response = await axiosInstance.post("/send-notification", {
-      message,
-      phoneNumber,
+    const data = JSON.stringify({
+      lineNumber: "30004505000017",
+      messageTexts,
+      mobiles,
+      senddatetime: null,
     });
+
+    const response = await axiosInstance.post("/send/likeToLike", data);
 
     return response.data;
   } catch (error) {
-    throw error;
+    throw error.response?.data || error.message;
   }
 }
 

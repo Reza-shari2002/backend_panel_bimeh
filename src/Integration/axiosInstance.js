@@ -1,9 +1,13 @@
 const axios = require("axios");
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000", // یا هر پورتی که بک‌اندت هست
+  baseURL: "https://api.sms.ir/v1",
   timeout: 10000,
-  headers: { "Content-Type": "application/json" },
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "text/plain",
+    "X-API-KEY": "YOURAPIKEY",
+  },
 });
 
 module.exports = axiosInstance;
