@@ -1,6 +1,6 @@
 const  MakeMessage  = require("./MakeMessage")
 const SendNotificationApi  = require("../../Integration/SendNotificationApi");
-async function SendNotification(data) {
+async function SendNotification_submit(data) {
     try{
         const message = MakeMessage(data);
         console.log(message);
@@ -12,4 +12,4 @@ async function SendNotification(data) {
     }
 }
 
-module.exports = SendNotification
+module.exports.SendNotification_submit = SendNotification_submit;
