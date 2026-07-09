@@ -8,8 +8,7 @@ const uploadInsuranceDocuments = require("../middlewares/forms/uploadInsuranceDo
 const checkbody = require("../genertic middlewares/checkbody");
 const validationUploadFiles = require('../middlewares/forms/validationUploadFiles');
 const verifyCaptcha = require('../middlewares/forms/verifyCaptcha');
-const saveondb = require('../controllers/users_form/saveondb');
-const saveInsuranceFiles = require('../controllers/users_form/saveInsuranceFiles');
+const savedataController = require('../controllers/users_form/savedataController');
 const viewcontroler = require('../controllers/users_form/viewcontroler');
 
 const router = express.Router();
@@ -35,6 +34,6 @@ router.get(
 
 
 
-router.post("/", iplimiter,verifyCaptcha, uploadInsuranceDocuments, checkbody("create form"),validationUploadFiles , saveInsuranceFiles,saveondb );
+router.post("/", iplimiter,verifyCaptcha, uploadInsuranceDocuments, checkbody("create form"),validationUploadFiles , savedataController );
 
 module.exports = router;

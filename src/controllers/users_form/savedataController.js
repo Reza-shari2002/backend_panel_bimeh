@@ -1,11 +1,12 @@
 const AppError = require('../../config/AppErrore');
 const form_db = require('../../services/db/forms');
 const { message } = require('../../validators/login_validate');
+const documentService = require('../../services/document/documentService')
 
-async function saveondb(req,res,next) {
+async function savedataController(req,res,next) {
     try{
-      const result =  await form_db.saveondb(req.savedFiles , req.body)
-      console.log("upload on db done");
+      const result =  await documentService.savedocument(req);
+      
       res.status(200).json({message:"done"});
         
     }
@@ -16,4 +17,4 @@ async function saveondb(req,res,next) {
     
 }
 
-module.exports = saveondb;
+module.exports = savedataController;
