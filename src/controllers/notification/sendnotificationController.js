@@ -8,6 +8,7 @@ async function sendnotificationController (req,res,next) {
         return
     }
     catch(err){
+    
         next(new AppError("خطا در ارتباط با سرویس ارسال پیام"   , 500))
     }
     

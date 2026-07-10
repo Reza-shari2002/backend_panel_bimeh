@@ -1,4 +1,5 @@
 const axios = require("axios");
+require("dotenv").config();
 
 const axiosInstance = axios.create({
   baseURL: "https://api.sms.ir/v1",
@@ -6,7 +7,8 @@ const axiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json",
     Accept: "text/plain",
-    "X-API-KEY": "YOURAPIKEY",
+    "X-API-KEY":  "xued4IxpSunTLZktxnh2ep771G0XuzwsQcOaEZc6BpeQ9kfO"
+,
   },
 });
 

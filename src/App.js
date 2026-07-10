@@ -29,6 +29,6 @@ app.use('/notification' , notification_router)
 
 app.use(err_handler);
 
-app.listen(3000, () => {
+app.listen(3000, "127.0.0.1" ,() => {
   console.log("server is listening on port 3000");
 });

@@ -2,17 +2,20 @@ const axiosInstance = require("./axiosInstance");
 
 async function SendNotificationApi(messageTexts, mobiles) {
   try {
-    const data = JSON.stringify({
+    // ۱. ارسال مستقیم آبجکت (بدون نیاز به JSON.stringify)
+    // ۲. اصلاح نحوه نگارش پارامتر به sendDateTime
+    const payload = {
       lineNumber: "30004505000017",
       messageTexts,
       mobiles,
-      senddatetime: null,
-    });
+      sendDateTime: null, // اصلاح نام پارامتر به CamelCase
+    };
 
-    const response = await axiosInstance.post("/send/likeToLike", data);
+    const response = await axiosInstance.post("/send/likeToLike", payload);
 
     return response.data;
   } catch (error) {
+    // بازگرداندن دقیق خطا جهت دیباگ راحت‌تر در کنترلر
     throw error.response?.data || error.message;
   }
 }
