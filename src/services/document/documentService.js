@@ -14,6 +14,7 @@ async function savedocument(req) {
 
     }
     catch(err){
+        console.log(err)
         throw(new AppError("server error" , 500))
     }
     

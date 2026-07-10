@@ -4,6 +4,7 @@ const AppError = require('../../config/AppErrore')
 async function sendnotificationController (req,res,next) {
     try{
         const response = await SendNotification.SendNotification_submit(req.body);
+        console.log(response)
         res.status(200).json({message:"موفقیت آمیز بود"})
         return
     }

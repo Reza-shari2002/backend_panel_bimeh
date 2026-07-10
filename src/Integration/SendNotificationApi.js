@@ -5,7 +5,7 @@ async function SendNotificationApi(messageTexts, mobiles) {
     // ۱. ارسال مستقیم آبجکت (بدون نیاز به JSON.stringify)
     // ۲. اصلاح نحوه نگارش پارامتر به sendDateTime
     const payload = {
-      lineNumber: "30004505000017",
+      lineNumber: "50003181890144",
       messageTexts,
       mobiles,
       sendDateTime: null, // اصلاح نام پارامتر به CamelCase
@@ -15,7 +15,7 @@ async function SendNotificationApi(messageTexts, mobiles) {
 
     return response.data;
   } catch (error) {
-    // بازگرداندن دقیق خطا جهت دیباگ راحت‌تر در کنترلر
+    console.log(error)
     throw error.response?.data || error.message;
   }
 }
