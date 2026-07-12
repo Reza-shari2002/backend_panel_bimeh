@@ -3,7 +3,7 @@ const joi = require("joi");
 const create_form_validator = joi.object({
   full_name : joi.string().max(50).required() , 
   phone_number: joi.string().max(50).required(),
-  address: joi.string().max(50).required(),
+  address: joi.string().max(100).required(),
   postal_code: joi.string().max(150).required(),
   has_discount_transfer: joi.string().valid("0","1").required(),
   has_active_insurance_transfer: joi.string().valid("0","1").required(),

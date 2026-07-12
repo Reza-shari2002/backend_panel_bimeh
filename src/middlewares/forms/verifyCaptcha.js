@@ -31,6 +31,7 @@ const verifyCaptcha = async (req, res, next) => {
     );
 
     const data = response.data;
+    console.log("Turnstile response:", data);
 
     if (data.success) return next();
 
