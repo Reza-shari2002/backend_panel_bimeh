@@ -9,6 +9,8 @@ const err_handler = require('./errorhandler/error_handler.js')
 const multer = require("multer");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger.js");
+const logger = require("./logger/logger");
+
 const app = express();
 
 
@@ -18,6 +20,7 @@ app.set("trust proxy", 1);
 app.use(cors());
 app.use(helmet());
 
+logger.info("started")
 app.use("/login", login_router);
 
 app.use("/forms", forms_router);
