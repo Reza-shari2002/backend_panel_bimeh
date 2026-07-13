@@ -15,12 +15,13 @@ const app = express();
 
 
 
+logger.info("project started")
 
 app.set("trust proxy", 1);
 app.use(cors());
 app.use(helmet());
 
-logger.info("started")
+
 app.use("/login", login_router);
 
 app.use("/forms", forms_router);

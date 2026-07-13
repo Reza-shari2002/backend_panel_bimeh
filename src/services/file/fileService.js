@@ -46,7 +46,7 @@ async function saveInsuranceFiles(data) {
   
   } catch (error) {
     console.log(error.message);
-    throw(new AppError(error.message, 400) );
+    throw(new AppError(error.message, 500) );
   }
 }
 

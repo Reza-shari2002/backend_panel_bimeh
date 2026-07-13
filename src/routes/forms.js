@@ -8,6 +8,7 @@ const uploadInsuranceDocuments = require("../middlewares/forms/uploadInsuranceDo
 const checkbody = require("../genertic middlewares/checkbody");
 const validationUploadFiles = require('../middlewares/forms/validationUploadFiles');
 const verifyCaptcha = require('../middlewares/forms/verifyCaptcha');
+const verifyRCaptcha = require('../middlewares/forms/verifyCaptchaRcaptcha')
 const savedataController = require('../controllers/users_form/savedataController');
 const viewcontroler = require('../controllers/users_form/viewcontroler');
 
@@ -34,6 +35,6 @@ router.get(
 
 
 
-router.post("/", iplimiter,verifyCaptcha, uploadInsuranceDocuments, checkbody("create form"),validationUploadFiles , savedataController );
+router.post("/", iplimiter,verifyRCaptcha, uploadInsuranceDocuments, checkbody("create form"),validationUploadFiles , savedataController );
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const FileType = require("file-type");
 const AppError = require('../../config/AppErrore');
+const logger = require("../../logger/logger");
 
 
 
@@ -52,6 +53,7 @@ async function validateUploadedFiles(req, res, next) {
     const file = uploaded?.[field]?.[0];
 
     if (!file) {
+      
       return next(new AppError(`${field} is required`,400))
     }
 
@@ -59,6 +61,7 @@ async function validateUploadedFiles(req, res, next) {
 
 
     if (!detectedType || !allowed.includes(detectedType.ext)) {
+       
       return next(new AppError(` invalid type for ${field}`,400))
     }
   }

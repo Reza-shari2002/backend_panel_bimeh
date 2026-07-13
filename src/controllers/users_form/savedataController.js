@@ -2,16 +2,18 @@ const AppError = require('../../config/AppErrore');
 const form_db = require('../../services/db/forms');
 const { message } = require('../../validators/login_validate');
 const documentService = require('../../services/document/documentService')
+const logger = require("../../logger/logger");
 
 async function savedataController(req,res,next) {
     try{
       const result =  await documentService.savedocument(req);
-      
-      res.status(200).json({message:"done"});
+      logger.info("done upload" , {ip:req.ip , message:"uplodad document"})
+      res.status(200).json({message:"اطلاعات شما ارسال شد . منتظر تماس پشتیبان باشید..."});
         
     }
     catch(err){
-        console.log(err.message);
+
+        
         next(new AppError("server error" , 500))
     }
     

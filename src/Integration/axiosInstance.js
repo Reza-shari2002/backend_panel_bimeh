@@ -7,8 +7,7 @@ const axiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json",
     Accept: "text/plain",
-    "X-API-KEY":  "xued4IxpSunTLZktxnh2ep771G0XuzwsQcOaEZc6BpeQ9kfO"
-,
+    "X-API-KEY": process.env.SMS_IR_API_KEY,
   },
 });
 

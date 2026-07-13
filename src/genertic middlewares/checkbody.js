@@ -3,6 +3,8 @@ const AppError = require("../config/AppErrore");
 const login_validate = require("../validators/login_validate");
 const create_form_validate = require("../validators/create_form_validate");
 const send_notification_validate = require('../validators/send_notification_validate')
+const logger = require("../logger/logger");
+
 function checkbody(item) {
   if (item === "login") {
     return async function (req, res, next) {
@@ -38,12 +40,13 @@ function checkbody(item) {
       const body = req?.body;
 
       if (!body) {
-        console.log("req has not body");
+        
         return next(new AppError("form data wrong", 400));
       }
 
       const { error, value } = create_form_validate.create_form_validator.validate(req.body);
       if (error) {
+        logger.error(`validation body :  ${error.details[0].message}`)
         console.log(`validation body :  ${error.details[0].message}`);
         return next(new AppError("form data wrong", 400));
       }
@@ -52,6 +55,7 @@ function checkbody(item) {
       if(req?.body.plate_history_type === '0'){
         const {error , value} = create_form_validate.plate_history_validator.validate(req.body.plate_history_code);
          if (error) {
+        logger.error(`validation body :  ${error.details[0].message}`)
         console.log(`plate_history_code is required`);
         return next(new AppError("form data wrong", 400));
       }
@@ -72,6 +76,7 @@ function checkbody(item) {
 
       const { error, value } = send_notification_validate.validate(req.body);
       if (error) {
+        logger.error(`validation body :  ${error.details[0].message}`)
         console.log(`validation body :  ${error.details[0].message}`);
         return next(new AppError("form data wrong", 400));
       }

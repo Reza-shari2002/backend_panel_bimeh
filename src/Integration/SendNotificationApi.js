@@ -1,4 +1,5 @@
 const axiosInstance = require("./axiosInstance");
+const logger = require("../logger/logger");
 
 async function SendNotificationApi(messageTexts, mobiles) {
   try {
@@ -16,6 +17,7 @@ async function SendNotificationApi(messageTexts, mobiles) {
     return response.data;
   } catch (error) {
     console.log(error)
+    logger.error(error)
     throw error.response?.data || error.message;
   }
 }
