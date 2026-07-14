@@ -1,12 +1,12 @@
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
-const AppError = require('../../config/AppErrore');
+const AppError = require("../../config/AppErrore");
 const FileType = require("file-type");
 
 async function saveInsuranceFiles(data) {
   try {
-    const requiredFiles = data.requiredFiles;
+    const requiredFiles = data.requiredFiles || [];
     const files = data.files;
 
     const baseDir = path.join(
@@ -39,16 +39,17 @@ async function saveInsuranceFiles(data) {
 
       savedFiles[fieldName] = `insurance-documents/${fileName}`;
     }
-    
 
-
-     return savedFiles;
-  
+    return savedFiles;
   } catch (error) {
     console.log(error.message);
-    throw(new AppError(error.message, 500) );
+
+    if (error instanceof AppError) {
+      throw error;
+    }
+
+    throw new AppError("server error", 500);
   }
 }
-
 
 module.exports.saveInsuranceFiles = saveInsuranceFiles;

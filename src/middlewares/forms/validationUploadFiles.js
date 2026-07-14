@@ -6,7 +6,7 @@ const logger = require("../../logger/logger");
 
 function getRequiredFiles(body) {
   const required = ["national_id_image_url"];
-  console.log(body)
+  
   if (body.document_car_type === "0") {
     required.push("car_card_image_front_url", "car_card_image_back_url");
   }

@@ -3,7 +3,7 @@ const appError = require("../../config/AppErrore");
 const admins_db = require("../../services/db/admins");
 
 const check = async (req, res, next) => {
-  const { user_name, password } = req.body.user_info;
+  const { user_name, password } = req.body?.user_info;
   try {
     const data = await admins_db.find_admin(user_name);
     if (data.length === 0) {

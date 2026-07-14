@@ -8,6 +8,7 @@ function checkpermission(item) {
       
       if (Number.isNaN(id)) {
         next(new AppError("id must be number", 400));
+        return;
       }
       try {
         const users_form = await forms_db.find_user_data(id);

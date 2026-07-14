@@ -5,18 +5,26 @@ const verifyAsync = util.promisify(jwt.verify);
 require("dotenv").config();
 
 async function access_verify(req, res, next) {
-  const main_token = req.headers.authorization;
-  const token = main_token && main_token.split(" ")[1];
-  if (!token) {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader) {
     return next(new AppError("Unauthorized", 401));
   }
+
+  const parts = authHeader.split(" ");
+
+  if (parts.length !== 2 || parts[0] !== "Bearer" || !parts[1]) {
+    return next(new AppError("Invalid authorization header format", 401));
+  }
+
+  const token = parts[1];
 
   try {
     const user = await verifyAsync(token, process.env.ACCESS_TOKEN_SECRET);
     req.user = user;
-    next();
+    return next();
   } catch (err) {
-    next(new AppError("Unauthorized", 401));
+    return next(new AppError("Unauthorized", 401));
   }
 }
 
