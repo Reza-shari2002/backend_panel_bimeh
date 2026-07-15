@@ -12,6 +12,7 @@ const swaggerSpec = require("./config/swagger.js");
 const logger = require("./logger/logger");
 
 const app = express();
+require("dotenv").config();
 
 
 
