@@ -10,11 +10,10 @@ router.use(express.json());
 
 router.post(
   "/send",
-  iplimiter,/*
-  token_verify ,*/ 
+  iplimiter,
+  token_verify , 
   checkbody("send"),
   sendnotificationController
-  
 );
 
 module.exports = router;
