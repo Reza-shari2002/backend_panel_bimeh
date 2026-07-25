@@ -1,5 +1,5 @@
 const MakeMessage = require("./MakeMessage");
-const SendNotificationApi = require("../../Integration/SendNotificationApi");
+const SendNotificationApi = require("../../Integration/SendNotificationApiKavenegar");
 
 async function SendNotification_submit(data) {
   const message = MakeMessage(data);
