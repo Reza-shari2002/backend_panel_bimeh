@@ -11,11 +11,11 @@ async function SendNotification_submit(data) {
 
   return response;
 }
-
 async function SendNotification_first_message(data) {
-  const message1 =
-    "کاربر گرامی درخواست شما ثبت گردید منتظر تماس از طرف پشتیبانی باشید";
-  const message2 = `پشتیبان گرامی شخصی به نام ${data.full_name}  جهت بیمه شخص ثالث ثبت اطلاعات کرد خواهشا پنل را چک فرمایید`;
+  const message1 = `کاربر گرامی 
+  درخواست شما ثبت گردید لطفا منتظر تماس از طرف پشتیبان اپلیکیشن پرند باشید` 
+  const message2 = `پشتیبان گرامی
+شخصی به نام ${data.full_name} جهت بیمه شخص ثالث اطلاعات خود را ثبت کرد ، لطفا پنل را چک کنید`;
 
   const response = await SendNotificationApi(
     [message1, message2 , message2 , message2 ,  message2],
