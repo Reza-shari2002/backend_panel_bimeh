@@ -3,9 +3,9 @@ const multer = require("multer");
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
-    fileSize: 10 * 1024 * 1024, // حداکثر ۵ مگابایت برای هر فایل
+    fileSize: 6 * 1024 * 1024, // حداکثر ۵ مگابایت برای هر فایل
     files: 10,                 // حداکثر ۱۰ فایل در کل درخواست (برای پوشش تمام حالت‌ها)
-    fields: 16                 // حداکثر ۱۵ فیلد متنی در body
+    fields: 20                 // حداکثر ۱۵ فیلد متنی در body
   },
 });
 

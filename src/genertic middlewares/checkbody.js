@@ -52,18 +52,11 @@ function checkbody(item) {
       }
 
 
-      if(req?.body.plate_history_type === '0'){
-        const {error , value} = create_form_validate.plate_history_validator.validate(req.body.plate_history_code);
-         if (error) {
-        logger.error(`validation body :  ${error.details[0].message}`)
-        console.log(`plate_history_code is required`);
-        return next(new AppError("form data wrong", 400));
-      }
-
-      }
-      
+      req.body = value;
       return next();
     };
+
+    
   }
   else if (item === "send") {
     return function (req, res, next) {
