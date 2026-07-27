@@ -13,6 +13,7 @@ const create_form_validator = joi.object({
   document_car_type: joi.string().valid("0", "1").required(),
   payment_type: joi.string().valid("0", "1", "2").required(),
   same_policyholder_owner: joi.string().valid("0", "1").required(),
+  
   plate_history_code: joi.string().trim().max(50).when("plate_history_type", {
     is: "0",
     then: joi.required(),

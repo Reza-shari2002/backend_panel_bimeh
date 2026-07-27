@@ -46,7 +46,7 @@ function checkbody(item) {
 
       const { error, value } = create_form_validate.create_form_validator.validate(req.body);
       if (error) {
-        logger.error(`validation body :  ${error.details[0].message}`)
+        logger.error(`validation body :  ${error.details[0].message}`);
         console.log(`validation body :  ${error.details[0].message}`);
         return next(new AppError("form data wrong", 400));
       }
@@ -56,7 +56,7 @@ function checkbody(item) {
       return next();
     };
 
-    
+
   }
   else if (item === "send") {
     return function (req, res, next) {

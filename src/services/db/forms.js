@@ -1,5 +1,6 @@
 const AppError = require("../../config/AppErrore");
 const db = require("../../config/db");
+const logger = require("../../logger/logger");
 
 async function find_user_data(id) {
   try {
@@ -34,6 +35,7 @@ async function find_users_data() {
   }
 }
 
+
 async function saveondb(files, body) {
   const final_data = {
     ...body,
@@ -48,6 +50,7 @@ async function saveondb(files, body) {
 
     return result;
   } catch (err) {
+    logger.error(err.message)
     console.log(err.message);
     throw new AppError("server error", 500);
   }

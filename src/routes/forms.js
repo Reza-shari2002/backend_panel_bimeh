@@ -35,6 +35,6 @@ router.get(
 
 
 
-router.post("/", iplimiter,verifyRCaptcha, uploadInsuranceDocuments, checkbody("create form"),validationUploadFiles , savedataController );
+router.post("/", iplimiter,/*verifyRCaptcha,*/ uploadInsuranceDocuments, checkbody("create form"),validationUploadFiles , savedataController );
 
 module.exports = router;
