@@ -16,8 +16,8 @@ async function SendNotificationApi(messageTexts, mobiles) {
 
     return response.data;
   } catch (error) {
-    console.log(error)
-    logger.error(error)
+    console.log(error);
+    logger.error(error);
     throw error.response?.data || error.message;
   }
 }

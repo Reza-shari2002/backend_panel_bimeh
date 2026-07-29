@@ -13,7 +13,7 @@ async function saveInsuranceFiles(data) {
       process.cwd(),
       "storage",
       "private",
-      "insurance-documents"
+      "insurance-documents",
     );
 
     await fs.promises.mkdir(baseDir, { recursive: true });

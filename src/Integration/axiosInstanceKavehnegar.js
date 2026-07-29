@@ -10,15 +10,20 @@ const axiosInstance = axios.create({
   },
 });
 
-axiosInstance.interceptors.request.use((config) => {
-  const apiKey = process.env.KAVENEGAR_API_KEY;
-  if (!apiKey) {
-    console.error("⚠️ خطای حیاتی: KAVENEGAR_API_KEY در فایل .env تعریف نشده است!");
-  }
-  config.url = `/${apiKey}/sms${config.url}`;
-  return config;
-}, (error) => {
-  return Promise.reject(error);
-});
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const apiKey = process.env.KAVENEGAR_API_KEY;
+    if (!apiKey) {
+      console.error(
+        "⚠️ خطای حیاتی: KAVENEGAR_API_KEY در فایل .env تعریف نشده است!",
+      );
+    }
+    config.url = `/${apiKey}/sms${config.url}`;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
 
 module.exports = axiosInstance;

@@ -8,7 +8,10 @@ const verifyRCaptcha = async (req, res, next) => {
     const token = req.headers["x-captcha-token"];
 
     if (!token) {
-      logger.error("400", { message: "no x-captcha-token sent from user", ip: req.ip });
+      logger.error("400", {
+        message: "no x-captcha-token sent from user",
+        ip: req.ip,
+      });
       return res.status(400).json({
         success: false,
         message: "لطفاً تایید کنید که ربات نیستید (توکن کپچا یافت نشد)",
@@ -27,7 +30,7 @@ const verifyRCaptcha = async (req, res, next) => {
         headers: {
           "Content-Type": "application/json", // بسیار مهم
         },
-      }
+      },
     );
 
     const data = response.data;
@@ -38,10 +41,10 @@ const verifyRCaptcha = async (req, res, next) => {
     }
 
     // لاگ کردن خطا در صورت نامعتبر بودن کپچا
-    logger.error("403", { 
-      message: "captcha token invalid", 
-      ip: req.ip, 
-      errorCodes: data["error-codes"] 
+    logger.error("403", {
+      message: "captcha token invalid",
+      ip: req.ip,
+      errorCodes: data["error-codes"],
     });
 
     return res.status(403).json({
@@ -49,18 +52,18 @@ const verifyRCaptcha = async (req, res, next) => {
       message: "تاییدیه امنیتی (کپچا) نامعتبر است. لطفاً دوباره تلاش کنید.",
       errors: data["error-codes"],
     });
-
   } catch (error) {
     // لاگ کردن خطاهای شبکه یا خود سرویس آرکپچا
-    logger.error("500", { 
-      message: "can not connect to arcaptcha service", 
+    logger.error("500", {
+      message: "can not connect to arcaptcha service",
       ip: req.ip,
-      error: error.message 
+      error: error.message,
     });
-    
+
     return res.status(500).json({
       success: false,
-      message: "خطا در برقراری ارتباط با سرویس امنیتی. لطفاً لحظاتی دیگر تلاش کنید.",
+      message:
+        "خطا در برقراری ارتباط با سرویس امنیتی. لطفاً لحظاتی دیگر تلاش کنید.",
     });
   }
 };

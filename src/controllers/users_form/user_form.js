@@ -25,8 +25,7 @@ async function user_form_controller(req, res, next) {
       const filePath = formData[field];
 
       if (filePath) {
-        formData[field] =
-          `forms/view?path=${encodeURIComponent(filePath)}`;
+        formData[field] = `forms/view?path=${encodeURIComponent(filePath)}`;
       }
     }
 

@@ -2,7 +2,7 @@ const { json } = require("express");
 const AppError = require("../config/AppErrore");
 const login_validate = require("../validators/login_validate");
 const create_form_validate = require("../validators/create_form_validate");
-const send_notification_validate = require('../validators/send_notification_validate')
+const send_notification_validate = require("../validators/send_notification_validate");
 const logger = require("../logger/logger");
 
 function checkbody(item) {
@@ -29,36 +29,26 @@ function checkbody(item) {
 
       next();
     };
-
-
-
-
-
-
   } else if (item === "create form") {
     return function (req, res, next) {
       const body = req?.body;
 
       if (!body) {
-        
         return next(new AppError("form data wrong", 400));
       }
 
-      const { error, value } = create_form_validate.create_form_validator.validate(req.body);
+      const { error, value } =
+        create_form_validate.create_form_validator.validate(req.body);
       if (error) {
         logger.error(`validation body :  ${error.details[0].message}`);
         console.log(`validation body :  ${error.details[0].message}`);
         return next(new AppError("form data wrong", 400));
       }
 
-
       req.body = value;
       return next();
     };
-
-
-  }
-  else if (item === "send") {
+  } else if (item === "send") {
     return function (req, res, next) {
       const body = req?.body;
 
@@ -69,14 +59,11 @@ function checkbody(item) {
 
       const { error, value } = send_notification_validate.validate(req.body);
       if (error) {
-        logger.error(`validation body :  ${error.details[0].message}`)
+        logger.error(`validation body :  ${error.details[0].message}`);
         console.log(`validation body :  ${error.details[0].message}`);
         return next(new AppError("form data wrong", 400));
       }
 
-
-
-      
       return next();
     };
   }

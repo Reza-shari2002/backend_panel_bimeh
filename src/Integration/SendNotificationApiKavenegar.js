@@ -3,8 +3,8 @@ const logger = require("../logger/logger");
 
 async function SendNotificationApi(messageTexts, mobiles) {
   try {
-    const defaultSender = process.env.KAVENEGAR_SENDER_LINE || "10008566"; 
-    
+    const defaultSender = process.env.KAVENEGAR_SENDER_LINE || "10008566";
+
     const senders = Array(mobiles.length).fill(defaultSender);
 
     const params = new URLSearchParams();
@@ -17,9 +17,11 @@ async function SendNotificationApi(messageTexts, mobiles) {
     return response.data;
   } catch (error) {
     console.error("Kavenegar API Error:", error);
-    
+
     logger.error(
-      error.response?.data?.return?.message || error.message || "خطا در اتصال به کاوه نگار"
+      error.response?.data?.return?.message ||
+        error.message ||
+        "خطا در اتصال به کاوه نگار",
     );
     throw error.response?.data || error.message;
   }
