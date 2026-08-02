@@ -14,7 +14,7 @@ async function savedocument(req) {
       ip: req.ip,
       message: "upload on db done",
     });
-    // const response = await notificationService.SendNotification_first_message(req.body)
+    const response = await notificationService.SendNotification_first_message(req.body)
     logger.info("sent sms done", { ip: req.ip, message: "sms done" });
     return;
   } catch (err) {
