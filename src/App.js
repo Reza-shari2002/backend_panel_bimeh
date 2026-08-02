@@ -17,7 +17,10 @@ require("dotenv").config();
 logger.info("project started");
 
 app.set("trust proxy", 1);
-app.use(cors());
+app.use(cors({
+  origin: 'https://parand-insurance.ir',
+  credentials: true,
+}));
 app.use(helmet());
 
 app.use("/login", login_router);
