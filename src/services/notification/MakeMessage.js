@@ -17,11 +17,18 @@ function MakeMessage(data) {
   const formattedCostOfRate = Number(cost_of_rate).toLocaleString("fa-IR");
 
   if (normalizedPaymentType === "1") {
-    return `کاربر گرامی ${full_name}، بیمه نامه خودرو ${car_name} به مبلغ ${formattedTotalCost} ریال به صورت اقساط با پیش پرداخت ${formattedPrecome} ریال و اقساط ماهانه ${formattedCostOfRate} ریال به تعداد ${count_of_rate} قسط در تاریخ ${formattedDate} برای شما ثبت گردید.`;
+    return `کاربر گرامی
+ ${full_name}، بیمه نامه خودرو ${car_name} به مبلغ ${formattedTotalCost} ریال به صورت اقساط با پیش پرداخت ${formattedPrecome} ریال و اقساط ماهانه ${formattedCostOfRate} ریال به تعداد ${count_of_rate} قسط در تاریخ ${formattedDate} برای شما ثبت گردید. جهت پرداخت نهایی به قسمت فروشگاه ،بخش پرداخت حق بیمه مراجعه کنید
+
+با تشکر اپلیکیشن پرند`;
   }
 
   if (normalizedPaymentType === "0") {
-    return `کاربر گرامی ${full_name}، بیمه نامه خودرو ${car_name} به مبلغ ${formattedTotalCost} ریال به صورت نقد در تاریخ ${formattedDate} برای شما ثبت گردید.`;
+    return `کاربر گرامی
+ ${full_name}، بیمه نامه خودرو ${car_name} به مبلغ ${formattedTotalCost} ریال به صورت نقد در تاریخ ${formattedDate} برای شما ثبت گردید.
+جهت پرداخت نهایی به قسمت فروشگاه ،بخش پرداخت حق بیمه مراجعه کنید.
+
+با تشکر اپلیکیشن پرند`;
   }
 
   return "";
