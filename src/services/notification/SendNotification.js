@@ -7,17 +7,11 @@ async function SendNotification_submit(data) {
   const response = await SendNotificationApi(
     [
       message,
-      "پیام برای کاربر ارسال شد",
-      "پیام برای کاربر ارسال شد",
-      "پیام برای کاربر ارسال شد",
-      "پیام برای کاربر ارسال شد",
+
     ],
     [
       data.phone_number,
-      "09166082219",
-      "09001052444",
-      "09165246694",
-      "09029082442",
+
     ],
   );
 
