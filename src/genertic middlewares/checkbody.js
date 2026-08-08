@@ -3,7 +3,9 @@ const AppError = require("../config/AppErrore");
 const login_validate = require("../validators/login_validate");
 const create_form_validate = require("../validators/create_form_validate");
 const send_notification_validate = require("../validators/send_notification_validate");
+const query_car_validate = require('../validators/query_car_validate')
 const logger = require("../logger/logger");
+const car_validate_schema = require("../validators/query_car_validate");
 
 function checkbody(item) {
   if (item === "login") {
@@ -66,6 +68,20 @@ function checkbody(item) {
 
       return next();
     };
+  }
+  else if(item === 'query'){
+    return  function (req,res,next) {
+      const {error , value} =  car_validate_schema.validate(req.query ,{ convert: true } );
+      if(error){
+        logger.error(`validation query : ${error.details[0].message}`);
+        console.log(`validation body :  ${error.details[0].message}`);
+        return next(new AppError("query not valid"  , 400));
+      }
+       req.validatedQuery = value;
+
+     return next();
+
+    }
   }
 }
 

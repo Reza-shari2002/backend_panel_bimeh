@@ -11,12 +11,14 @@ const verifyCaptcha = require("../middlewares/forms/verifyCaptcha");
 const verifyRCaptcha = require("../middlewares/forms/verifyCaptchaRcaptcha");
 const savedataController = require("../controllers/users_form/savedataController");
 const viewcontroler = require("../controllers/users_form/viewcontroler");
-
+const users_form_query_controller = require("../controllers/users_form/users_forms_query");
 const router = express.Router();
 
 router.get("/", /* iplimiter*/ token_verify, users_form_controller);
 
 router.get("/view", token_verify, viewcontroler);
+
+router.get('/query'  , token_verify , checkbody('query')  , users_form_query_controller );
 
 router.get(
   "/:form_id" /*
