@@ -12,7 +12,9 @@ const verifyRCaptcha = require("../middlewares/forms/verifyCaptchaRcaptcha");
 const savedataController = require("../controllers/users_form/savedataController");
 const viewcontroler = require("../controllers/users_form/viewcontroler");
 const users_form_query_controller = require("../controllers/users_form/users_forms_query");
+const filter_forms_controller = require('../controllers/users_form/filter_forms_controller')
 const router = express.Router();
+router.use(express.json());
 
 router.get("/", /* iplimiter*/ token_verify, users_form_controller);
 
@@ -20,9 +22,11 @@ router.get("/view", token_verify, viewcontroler);
 
 router.get('/query'  , token_verify , checkbody('query')  , users_form_query_controller );
 
+router.post('/filter' , token_verify  ,  checkbody('filter') , filter_forms_controller )
+
 router.get(
-  "/:form_id" /*
-  iplimiter,*/,
+  "/:form_id"   , /* 
+  iplimiter,*/
   token_verify,
   checkpermission("user_form"),
   userData_controller,

@@ -6,6 +6,9 @@ const send_notification_validate = require("../validators/send_notification_vali
 const query_car_validate = require('../validators/query_car_validate')
 const logger = require("../logger/logger");
 const car_validate_schema = require("../validators/query_car_validate");
+const filter_data_validta = require('../validators/filter_data_validate');
+
+
 
 function checkbody(item) {
   if (item === "login") {
@@ -80,6 +83,23 @@ function checkbody(item) {
        req.validatedQuery = value;
 
      return next();
+
+    }
+  }
+
+  else if(item === "filter"){
+    return function (req,res,next){
+      
+      const body = req.body;
+      const {error , value} = filter_data_validta.validate(body);
+      if(error){
+        logger.error(`validation error:${error.details[0].message}`);
+        console.log(`validation error : ${error.details[0].message}`);
+        return next(new AppError("filter body not valid" , 400));
+      }
+      logger.info(req.body)
+      req.body = body;
+       return next();
 
     }
   }
