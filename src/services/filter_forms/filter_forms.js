@@ -9,8 +9,9 @@ async function filter_forms(filter) {
 
             return flag_phone && flage_fullName;
         })
+        const page_count = Math.max(1,Math.ceil(filteredRows.length/7));
 
-        return filteredRows;
+        return {data:filteredRows , page_count:page_count};
     }
     catch(err){
         throw err;

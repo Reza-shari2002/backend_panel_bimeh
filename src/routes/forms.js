@@ -22,7 +22,7 @@ router.get("/view", token_verify, viewcontroler);
 
 router.get('/query'  , token_verify , checkbody('query')  , users_form_query_controller );
 
-router.post('/filter' , token_verify  ,  checkbody('filter') , filter_forms_controller )
+router.get('/filter' , token_verify  ,  checkbody('filter') , filter_forms_controller )
 
 router.get(
   "/:form_id"   , /* 

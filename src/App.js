@@ -16,11 +16,23 @@ require("dotenv").config();
 
 logger.info("project started");
 
-app.set("trust proxy", 1);
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://parand-insurance.ir',
+];
+
 app.use(cors({
-  origin: 'https://parand-insurance.ir',
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) callback(null, true);
+    else callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
 }));
+
+
+app.set("trust proxy", 1);
+
 app.use(helmet());
 
 app.use("/login", login_router);

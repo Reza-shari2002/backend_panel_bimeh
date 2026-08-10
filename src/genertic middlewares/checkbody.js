@@ -90,15 +90,15 @@ function checkbody(item) {
   else if(item === "filter"){
     return function (req,res,next){
       
-      const body = req.body;
-      const {error , value} = filter_data_validta.validate(body);
+      const filter = req.query;
+      const {error , value} = filter_data_validta.validate(filter);
       if(error){
         logger.error(`validation error:${error.details[0].message}`);
         console.log(`validation error : ${error.details[0].message}`);
-        return next(new AppError("filter body not valid" , 400));
+        return next(new AppError("filter  not valid" , 400));
       }
-      logger.info(req.body)
-      req.body = body;
+      logger.info(JSON.stringify(req.query))
+      req.filter = filter;
        return next();
 
     }
