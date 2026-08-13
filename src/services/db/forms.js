@@ -74,7 +74,7 @@ async function  finde_query_record(limit , offset) {
    const query = `
   SELECT phone_number, payment_type, id, address, postal_code, 
          plate_history_code, has_discount_transfer, has_active_insurance_transfer, 
-         is_relative_transfer, plate_history_type, document_car_type, 
+         is_relative_transfer, plate_history_type, document_car_type, same_policyholder_owner, 
          full_name, created_at 
   FROM forms 
   ORDER BY created_at DESC 
