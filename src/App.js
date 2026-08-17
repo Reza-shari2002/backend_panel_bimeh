@@ -19,7 +19,7 @@ logger.info("project started");
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://parand-insurance.ir',
+  'https://parand-insurance.ir','https://parandbime.ir'
 ];
 
 app.use(cors({
