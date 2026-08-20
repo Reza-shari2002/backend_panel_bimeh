@@ -3,13 +3,11 @@ const cors = require("cors");
 const helmet = require("helmet");
 const bcrypt = require("bcrypt");
 const login_router = require("../src/routes/login.js");
-const forms_router = require("./routes/forms.js");
+const forms_router = require("./modules/third-party-insurance/third-party.routes.js");
 const notification_router = require("./routes/notifications.js");
 const err_handler = require("./errorhandler/error_handler.js");
 const multer = require("multer");
-const swaggerUi = require("swagger-ui-express");
-const swaggerSpec = require("./config/swagger.js");
-const logger = require("./logger/logger");
+const logger = require("./config/logger.js");
 
 const app = express();
 require("dotenv").config();

@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const util = require("util");
-const AppError = require("../../config/AppErrore");
+const AppError = require("../config/AppErrore");
 const verifyAsync = util.promisify(jwt.verify);
 require("dotenv").config();
 

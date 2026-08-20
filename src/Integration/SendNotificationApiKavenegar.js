@@ -1,5 +1,5 @@
 const axiosInstance = require("./axiosInstanceKavehnegar");
-const logger = require("../logger/logger");
+const logger = require("../config/logger");
 
 async function SendNotificationApi(messageTexts, mobiles) {
   try {

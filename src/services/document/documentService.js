@@ -2,7 +2,7 @@ const AppError = require("../../config/AppErrore");
 const form_db = require("../db/forms");
 const fileService = require("../file/fileService");
 const notificationService = require("../notification/SendNotification");
-const logger = require("../../logger/logger");
+const logger = require("../../config/logger");
 const { message } = require("../../validators/login_validate");
 
 async function savedocument(req) {

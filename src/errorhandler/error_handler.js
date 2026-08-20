@@ -1,5 +1,5 @@
 const multer = require("multer");
-const logger = require("../logger/logger");
+const logger = require("../config/logger");
 const { message } = require("../validators/login_validate");
 
 const err_handler = (err, req, res, next) => {

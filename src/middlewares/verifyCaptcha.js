@@ -1,7 +1,7 @@
 const axios = require("axios");
 require("dotenv").config();
-const logger = require("../../logger/logger");
-const { message } = require("../../validators/login_validate");
+const logger = require("../config/logger");
+const { message } = require("../validators/login_validate");
 
 const verifyCaptcha = async (req, res, next) => {
   try {

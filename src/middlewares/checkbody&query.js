@@ -4,14 +4,15 @@ const login_validate = require("../validators/login_validate");
 const create_form_validate = require("../validators/create_form_validate");
 const send_notification_validate = require("../validators/send_notification_validate");
 const query_car_validate = require('../validators/query_car_validate')
-const logger = require("../logger/logger");
+const logger = require("../config/logger");
 const car_validate_schema = require("../validators/query_car_validate");
 const filter_data_validta = require('../validators/filter_data_validate');
 
 
 
-function checkbody(item) {
-  if (item === "login") {
+function checkbody_query(item , schema) {
+
+    if (item === "login") {
     return async function (req, res, next) {
       const body = req.body;
 
@@ -26,7 +27,7 @@ function checkbody(item) {
           .json({ message: "بدنه درخواست باید شامل user_info باشد." });
       }
 
-      const { error, value } = login_validate.validate(user_info);
+      const { error, value } = schema.validate(user_info);
       if (error) {
         console.log(`validation body :  ${error.details[0].message}`);
         return next(new AppError("login data wrong", 400));
@@ -34,7 +35,15 @@ function checkbody(item) {
 
       next();
     };
-  } else if (item === "create form") {
+  }
+  
+  
+  
+  
+  
+  
+  
+  else if (item === "create form") {
     return function (req, res, next) {
       const body = req?.body;
 
@@ -42,8 +51,7 @@ function checkbody(item) {
         return next(new AppError("form data wrong", 400));
       }
 
-      const { error, value } =
-        create_form_validate.create_form_validator.validate(req.body);
+      const { error, value } =schema.validate(req.body);
       if (error) {
         logger.error(`validation body :  ${error.details[0].message}`);
         console.log(`validation body :  ${error.details[0].message}`);
@@ -62,7 +70,7 @@ function checkbody(item) {
         return next(new AppError("form data wrong", 400));
       }
 
-      const { error, value } = send_notification_validate.validate(req.body);
+      const { error, value } = schema.validate(req.body);
       if (error) {
         logger.error(`validation body :  ${error.details[0].message}`);
         console.log(`validation body :  ${error.details[0].message}`);
@@ -74,7 +82,7 @@ function checkbody(item) {
   }
   else if(item === 'query'){
     return  function (req,res,next) {
-      const {error , value} =  car_validate_schema.validate(req.query ,{ convert: true } );
+      const {error , value} =  schema.validate(req.query ,{ convert: true } );
       if(error){
         logger.error(`validation query : ${error.details[0].message}`);
         console.log(`validation body :  ${error.details[0].message}`);
@@ -91,7 +99,7 @@ function checkbody(item) {
     return function (req,res,next){
       
       const filter = req.query;
-      const {error , value} = filter_data_validta.validate(filter);
+      const {error , value} = schema.validate(filter);
       if(error){
         logger.error(`validation error:${error.details[0].message}`);
         console.log(`validation error : ${error.details[0].message}`);
@@ -105,4 +113,4 @@ function checkbody(item) {
   }
 }
 
-module.exports = checkbody;
+module.exports = checkbody_query;

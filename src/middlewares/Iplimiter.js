@@ -1,5 +1,5 @@
 const rateLimit = require("express-rate-limit");
-const logger = require("../logger/logger");
+const logger = require("../config/logger");
 const { message } = require("../validators/login_validate");
 
 const ipLimiter = rateLimit({

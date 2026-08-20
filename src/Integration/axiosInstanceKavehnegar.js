@@ -1,8 +1,8 @@
 const axios = require("axios");
-require("dotenv").config(); // لود کردن مستقیم برای اطمینان بیشتر
+require("dotenv").config(); 
 
 const axiosInstance = axios.create({
-  baseURL: "https://api.kavenegar.com/v1", // مسیر پایه را بدون کلید تعریف می‌کنیم
+  baseURL: "https://api.kavenegar.com/v1", 
   timeout: 10000,
   headers: {
     "Content-Type": "application/x-www-form-urlencoded",

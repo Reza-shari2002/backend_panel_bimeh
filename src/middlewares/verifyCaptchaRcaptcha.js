@@ -1,6 +1,6 @@
 const axios = require("axios");
 require("dotenv").config();
-const logger = require("../../logger/logger");
+const logger = require("../config/logger");
 
 const verifyRCaptcha = async (req, res, next) => {
   try {
@@ -35,12 +35,10 @@ const verifyRCaptcha = async (req, res, next) => {
 
     const data = response.data;
 
-    // بررسی پاسخ موفقیت‌آمیز
     if (data.success) {
       return next();
     }
 
-    // لاگ کردن خطا در صورت نامعتبر بودن کپچا
     logger.error("403", {
       message: "captcha token invalid",
       ip: req.ip,
@@ -53,7 +51,6 @@ const verifyRCaptcha = async (req, res, next) => {
       errors: data["error-codes"],
     });
   } catch (error) {
-    // لاگ کردن خطاهای شبکه یا خود سرویس آرکپچا
     logger.error("500", {
       message: "can not connect to arcaptcha service",
       ip: req.ip,

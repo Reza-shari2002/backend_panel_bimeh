@@ -32,7 +32,7 @@ async function saveInsuranceFiles(data) {
       }
 
       const randomName = crypto.randomBytes(16).toString("hex");
-      const fileName = `${randomName}.${type.ext}`;
+      const fileName = `${randomName }.${type.ext}`;
       const absolutePath = path.join(baseDir, fileName);
 
       await fs.promises.writeFile(absolutePath, file.buffer);

@@ -1,6 +1,6 @@
 const AppError = require("../../config/AppErrore");
 const db = require("../../config/db");
-const logger = require("../../logger/logger");
+const logger = require("../../config/logger");
 
 async function find_user_data(id) {
   try {
@@ -35,7 +35,7 @@ async function find_users_data() {
   }
 }
 
-async function saveondb(files, body) {
+async function insertForm(files, body) {
   const final_data = {
     ...body,
     ...files,
@@ -94,6 +94,6 @@ async function  finde_query_record(limit , offset) {
 
 module.exports.find_user_data = find_user_data;
 module.exports.find_users_data = find_users_data;
-module.exports.saveondb = saveondb;
+module.exports.insertForm = insertForm;
 module.exports.find_records_number = find_records_number;
 module.exports.finde_query_record = finde_query_record;
