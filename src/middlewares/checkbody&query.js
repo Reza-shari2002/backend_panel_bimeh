@@ -1,12 +1,6 @@
 const { json } = require("express");
 const AppError = require("../config/AppErrore");
-const login_validate = require("../validators/login_validate");
-const create_form_validate = require("../validators/create_form_validate");
-const send_notification_validate = require("../validators/send_notification_validate");
-const query_car_validate = require('../validators/query_car_validate')
 const logger = require("../config/logger");
-const car_validate_schema = require("../validators/query_car_validate");
-const filter_data_validta = require('../validators/filter_data_validate');
 
 
 
@@ -61,7 +55,9 @@ function checkbody_query(item , schema) {
       req.body = value;
       return next();
     };
-  } else if (item === "send") {
+  }
+  
+  else if (item === "send") {
     return function (req, res, next) {
       const body = req?.body;
 
@@ -74,12 +70,14 @@ function checkbody_query(item , schema) {
       if (error) {
         logger.error(`validation body :  ${error.details[0].message}`);
         console.log(`validation body :  ${error.details[0].message}`);
-        return next(new AppError("form data wrong", 400));
+        return next(new AppError("notification_data_wrong", 400));
       }
-
+      req.body = value;
       return next();
     };
   }
+
+
   else if(item === 'query'){
     return  function (req,res,next) {
       const {error , value} =  schema.validate(req.query ,{ convert: true } );

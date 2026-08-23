@@ -1,7 +1,7 @@
 
 const SendNotificationApi = require("./integration/SendNotificationApiKavenegar");
 
-function MakeMessage(data) {
+function MakeMessage_third_party(data) {
   const {
     payment_type,
     date,
@@ -39,14 +39,19 @@ function MakeMessage(data) {
   return "";
 }
 
-async function SendNotification_submit(data) {
-  const message = MakeMessage(data);
+
+
+async function SendNotification_submit_third_party(data) {
+  const message = MakeMessage_third_party(data);
 
   const response = await SendNotificationApi([message], [data.phone_number]);
 
   return response;
 }
-async function SendNotification_first_message(data) {
+
+
+
+async function SendNotification_first_message_third_party(data) {
   const message1 = `کاربر گرامی 
   درخواست شما ثبت گردید لطفا منتظر تماس از طرف پشتیبان اپلیکیشن پرند باشید`;
   const message2 = `پشتیبان گرامی
@@ -66,5 +71,5 @@ async function SendNotification_first_message(data) {
   return response;
 }
 
-module.exports.SendNotification_submit = SendNotification_submit;
-module.exports.SendNotification_first_message = SendNotification_first_message;
+module.exports.SendNotification_submit_third_party = SendNotification_submit_third_party;
+module.exports.SendNotification_first_message_third_party = SendNotification_first_message_third_party;

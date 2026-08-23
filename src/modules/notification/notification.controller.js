@@ -1,9 +1,9 @@
-const SendNotification = require("../../services/notification/SendNotification");
+const Services = require('./notification.service')
 const AppError = require("../../config/AppErrore");
 
-async function sendnotificationController(req, res, next) {
+async function Submit_third_party_insurance(req, res, next) {
   try {
-    const response = await SendNotification.SendNotification_submit(req.body);
+    const response = await Services.SendNotification_submit_third_party(req.body);
     
     res.status(200).json({ message: "موفقیت آمیز بود" });
     return;
@@ -12,4 +12,4 @@ async function sendnotificationController(req, res, next) {
   }
 }
 
-module.exports = sendnotificationController;
+module.exports.Submit_third_party_insurance = Submit_third_party_insurance;

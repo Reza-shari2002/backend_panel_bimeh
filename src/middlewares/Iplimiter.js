@@ -1,6 +1,5 @@
 const rateLimit = require("express-rate-limit");
 const logger = require("../config/logger");
-const { message } = require("../validators/login_validate");
 
 const ipLimiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 دقیقه

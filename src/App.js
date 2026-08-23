@@ -2,9 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const bcrypt = require("bcrypt");
-const login_router = require("../src/routes/login.js");
-const forms_router = require("./modules/third-party-insurance/third-party.routes.js");
-const notification_router = require("./routes/notifications.js");
+const routes = require('./routes/routes.js');
 const err_handler = require("./errorhandler/error_handler.js");
 const multer = require("multer");
 const logger = require("./config/logger.js");
@@ -33,11 +31,9 @@ app.set("trust proxy", 1);
 
 app.use(helmet());
 
-app.use("/login", login_router);
+app.use('/api' , routes);
 
-app.use("/forms", forms_router);
 
-app.use("/notification", notification_router);
 
 app.use(err_handler);
 

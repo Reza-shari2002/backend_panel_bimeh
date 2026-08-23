@@ -1,6 +1,6 @@
 const AppError = require("../../config/AppErrore");
 const reposetory = require("./third-party.reposetory");
-const notificationService = require("../../services/notification/SendNotification");
+const notificationService = require("../notification/notification.service");
 const logger = require("../../config/logger");
 const fs = require("fs");
 const path = require("path");
@@ -117,7 +117,7 @@ async function savedocument(req) {
       ip: req.ip,
       message: "upload on db done",
     });
-    //const response = await notificationService.SendNotification_first_message(req.body)
+    const response = await notificationService.SendNotification_first_message_third_party(req.body)
     logger.info("sent sms done", { ip: req.ip, message: "sms done" });
     return;
   } catch (err) {

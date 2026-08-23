@@ -1,6 +1,5 @@
 const express = require("express");
 const chcekauth = require("./middlewares/checkauth.js");
-const loginController = require("../controllers/login/loginController.js");
 const checkbody_query = require("../../middlewares/checkbody&query.js");
 const validation = require('./login.validation.js');
 const iplimiter = require("../../middlewares/Iplimiter.js");
