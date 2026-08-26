@@ -38,7 +38,7 @@ async function formDetail(user_data) {
       const filePath = formData[field];
 
       if (filePath) {
-        formData[field] = `third-party/forms/view?path=${encodeURIComponent(filePath)}`;
+        formData[field] = `/third-party-insurance/forms/view?path=${encodeURIComponent(filePath)}`;
       }
     }
 

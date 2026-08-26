@@ -14,7 +14,7 @@ logger.info("project started");
 
 
 const allowedOrigins = [
-  'http://localhost:5173',
+  'http://localhost:5173','http://localhost:5174' , 
   'https://parand-insurance.ir','https://parandbime.ir'
 ];
 

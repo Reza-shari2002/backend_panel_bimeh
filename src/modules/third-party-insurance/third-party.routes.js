@@ -32,7 +32,7 @@ router.get(
 router.post(
   "/",
   iplimiter,
-  /*verifyRCaptcha,*/ checkFormdata,
+  verifyRCaptcha, checkFormdata,
   checkbody_query("create form",validation.create_form_schema),
   validateUploadedFiles,
   controller.save_data

@@ -31,6 +31,7 @@ const create_form_schema = joi.object({
     .pattern(/^(13|14)\d{2}\/(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])$/)
     .required(),
 
+  has_prev_insurance :   joi.string().valid("0", "1").required(),
   has_discount_transfer: joi.string().valid("0", "1").required(),
   has_active_insurance_transfer: joi.string().valid("0", "1").required(),
   is_relative_transfer: joi.string().valid("0", "1").required(),
