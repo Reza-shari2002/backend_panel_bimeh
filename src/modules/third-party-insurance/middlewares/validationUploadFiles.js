@@ -1,6 +1,6 @@
 const FileType = require("file-type");
 const AppError = require("../../../config/AppErrore");
-const logger = require("../../../config/AppErrore");
+const logger = require("../../../config/logger");
 
 function getRequiredFiles(body) {
   const required = ["national_id_image_url"];

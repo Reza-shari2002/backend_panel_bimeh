@@ -3,7 +3,6 @@ const AppError = require("../config/AppErrore");
 const logger = require("../config/logger");
 
 
-
 function checkbody_query(item , schema) {
 
     if (item === "login") {
@@ -47,8 +46,8 @@ function checkbody_query(item , schema) {
 
       const { error, value } =schema.validate(req.body);
       if (error) {
-        logger.error(`validation body :  ${error.details[0].message}`);
         console.log(`validation body :  ${error.details[0].message}`);
+        logger.error(`validation body :  ${error.details[0].message}`);
         return next(new AppError("form data wrong", 400));
       }
 
